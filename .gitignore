@@ -1,4 +1,5 @@
 # Ignore folder named 'node_modules'
 node_modules
+.env
 .cache
 client/src/cache/*

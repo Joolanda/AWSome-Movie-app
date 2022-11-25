@@ -1,0 +1,25 @@
+$color: black;
+$font-size: 1.2rem;
+$margin: 10px;
+$borde-radius: 5px;
+$background-color: lightgray;
+
+.main-view {
+    display: inline-block;
+    color: $color;
+    font-size: $font-size;
+    cursor: pointer;
+}
+  
+.loading-message {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    width: 100vw;
+    height: 100vh;
+    font-size: 32px;
+    color: white;
+}
