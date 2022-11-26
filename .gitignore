@@ -3,3 +3,6 @@ node_modules
 .env
 .cache
 client/src/cache/*
+package-lock.json
+github_shh_key
+github_shh_key.pub
