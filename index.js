@@ -18,7 +18,15 @@ require('dotenv').config();
 //connecting cloud mongo using heroku
 mongoose.connect(process.env.CONNECTION_URI, 
     { useNewUrlParser: true, 
-     useUnifiedTopology: true });
+     useUnifiedTopology: true,
+     useCreateIndex: true, })
+     .then(() => {
+        console.log("Successfully connected to MongoDB Atlas!");
+      })
+      .catch((error) => {
+        console.log("Unable to connect to MongoDB Atlas!");
+        console.error(error);
+      });
 /*mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
                 { useNewUrlParser: true, 
                  useUnifiedTopology: true }); */
