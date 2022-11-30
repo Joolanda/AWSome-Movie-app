@@ -18,7 +18,8 @@
         "uuid": "^8.3.2"
     },
     "scripts": {
-        "start": "parcel",
+        // "start": "parcel",
+        "start": "parcel build src/index.html --public-url /client",
         "build": "parcel-build", 
         "test": "echo \"Error: no test specified\" && exit 1"
     },
