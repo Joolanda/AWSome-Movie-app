@@ -16,12 +16,12 @@ require('dotenv').config();
 /* mongoose.connect('mongodb://127.0.0.1:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
 */
 //connecting cloud mongo using heroku
-/* mongoose.connect(process.env.CONNECTION_URI, 
+mongoose.connect(process.env.CONNECTION_URI, 
     { useNewUrlParser: true, 
-     useUnifiedTopology: true }); */
-mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
+     useUnifiedTopology: true });
+/*mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
                 { useNewUrlParser: true, 
-                 useUnifiedTopology: true }); 
+                 useUnifiedTopology: true }); */
               
 //for connecting to mongoDB
 const Movies = Models.Movie;
