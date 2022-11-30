@@ -78,9 +78,10 @@ class MainView extends React.Component {
 
     render() {
         const { movies, loading, user } = this.state; 
-
+        // PB cloud, step 1: add after return <Router basename="/client"></Router>
         return (
             <Router>
+            
                 <Route exact path="/" render={() => {
                     if(!user)
                         return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />

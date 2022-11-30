@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
-const path = require('path');
+// PB cloud step 3a : const path = require('path');
 const app = express();
 
 //call dotenv
@@ -27,8 +27,8 @@ const Users = Models.User;
 //serving static content
 app.use(express.static('public'));
 
-//add this code right after the line app.use(express.static("public"));. task 3.6 prep for hosting
-app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
+// PB cloud, step3 add this code right after the line app.use(express.static("public"));. task 3.6 prep for hosting
+// app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
 
 //logging using morgan 
 app.use(morgan('common'));
