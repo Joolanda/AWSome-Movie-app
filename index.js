@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
+const path = require('path');
 const app = express();
 
 //call dotenv
