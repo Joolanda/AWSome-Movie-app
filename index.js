@@ -8,27 +8,26 @@ const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 const app = express();
 
+//call dotenv
+require('dotenv').config();
 
 //connecting local db
 /* mongoose.connect('mongodb://127.0.0.1:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
-
-// 'mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority'
 */
-mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
-    { useNewUrlParser: true, 
-    useUnifiedTopology: true }); 
-
 //connecting cloud mongo using heroku
-/*mongoose.connect(process.env.CONNECTION_URI, 
+mongoose.connect(process.env.CONNECTION_URI, 
                 { useNewUrlParser: true, 
                  useUnifiedTopology: true }); 
-  */              
+              
 //for connecting to mongoDB
 const Movies = Models.Movie;
 const Users = Models.User;
 
 //serving static content
 app.use(express.static('public'));
+
+//add this code right after the line app.use(express.static("public"));. task 3.6 prep for hosting
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
 
 //logging using morgan 
 app.use(morgan('common'));
@@ -74,6 +73,9 @@ app.listen(port, '0.0.0.0', () => {
 app.get('/', (req, res) => {
     res.send("Welcome to my CloudFlix API !!!");
 });
+app.get("/client/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+  });
 
 // Return a list of ALL movies to the user
 //commented for frontend exercise
@@ -278,5 +280,5 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 app.listen(3000, () => {
-    console.log('Server started on port 3000');
+    console.log('Server started on port 8080');
 });

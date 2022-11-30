@@ -42033,7 +42033,7 @@ const RegisterationView = ()=>{
             });
             data && window.open("/", "_self");
         }).catch((error)=>{
-            setMessage("User registration failed. Please try later");
+            setMessage("User registration failed. Plaese try later");
             /*window.open('/', '_self');*/ console.log(`Registration failed!!! ${error}`);
         });
     };
@@ -42255,7 +42255,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
 parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES);
 parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER);
-const API_URL = "https://myflix-movie.herokuapp.com";
+const API_URL = "https://awesome-movie.herokuapp.com";
 const SET_MOVIES = "SET_MOVIES";
 const SET_FILTER = "SET_FILTER";
 
