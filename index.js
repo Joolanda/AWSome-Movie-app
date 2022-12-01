@@ -295,6 +295,6 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
     console.log('Server started on port 8080');
 });
