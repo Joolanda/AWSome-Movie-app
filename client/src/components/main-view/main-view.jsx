@@ -79,6 +79,18 @@ class MainView extends React.Component {
     render() {
         const { movies, loading, user } = this.state; 
         // hosting client on heroku together with api: <Router basename="/client"></Router>
+        // previous code from MyFlix Movie App:
+        let username = localStorage.getItem('user');
+        // Allowed or restricted pages: Currentpath to check which page the user is currently on
+        const currentPath = window.location.pathname;
+        // Add more allowed paths
+        const allowedPaths = ['/register', '/login', '/client/register', '/', '/client', 'client/login'];
+        if (!user && !allowedPaths.includes(currentPath)) {
+            return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+        }
+        
+        if (!movies) return <div className="main-view" />;
+
         return (
             <Router>     
                 <Route exact path="/" render={() => {
