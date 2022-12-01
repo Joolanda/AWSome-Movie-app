@@ -37935,9 +37935,8 @@ class MainView extends (0, _reactDefault.default).Component {
     }
     render() {
         const { movies , loading , user  } = this.state;
-        // PB cloud, step 1: add after return <Router basename="/client"></Router>
+        // hosting client on heroku together with api: <Router basename="/client"></Router>
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
-            basename: "/client",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                     exact: true,
@@ -42033,8 +42032,8 @@ const RegisterationView = ()=>{
                 email: "",
                 dob: ""
             });
-            data && window.open("/client", "_self");
-        // Before hosting on Heroku together with api: data && window.open('/', '_self');
+            data && window.open("/", "_self");
+        // hosting client on heroku together with api: data && window.open('/client', '_self');
         }).catch((error)=>{
             setMessage("User registration failed. Please try later");
             /*window.open('/', '_self');*/ console.log(`Registration failed!!! ${error}`);
