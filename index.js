@@ -6,9 +6,8 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
-// PB cloud step 3a : const path = require('path');
+// hosting client on heroku together with api: const path = require('path');
 const app = express();
-const path = require('path');
 //call dotenv
 require('dotenv').config();
 
@@ -31,9 +30,6 @@ mongoose.connect(process.env.CONNECTION_URI,
         console.log("Unable to connect to MongoDB Atlas!");
         console.error(error);
       });
-/*mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
-                { useNewUrlParser: true, 
-                 useUnifiedTopology: true }); */
               
 //for connecting to mongoDB
 const Movies = Models.Movie;
@@ -43,7 +39,7 @@ const Users = Models.User;
 app.use(express.static('public'));
 
 // Prepare for hosting on Heroku together with api
-app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
+// app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
 
 //logging using morgan 
 app.use(morgan('common'));
@@ -89,9 +85,10 @@ app.listen(port, '0.0.0.0', () => {
 app.get('/', (req, res) => {
     res.send("Welcome to my CloudFlix API !!!");
 });
-app.get("/client/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-  });
+// hosting client on heroku together with api:
+// app.get("/client/*", (req, res) => {
+//    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+//  });
 
 // Return a list of ALL movies to the user
 //commented for frontend exercise
