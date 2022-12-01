@@ -8,7 +8,7 @@ const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 // PB cloud step 3a : const path = require('path');
 const app = express();
-
+const path = require('path');
 //call dotenv
 require('dotenv').config();
 
@@ -42,8 +42,8 @@ const Users = Models.User;
 //serving static content
 app.use(express.static('public'));
 
-// PB cloud, step3 add this code right after the line app.use(express.static("public"));. task 3.6 prep for hosting
-// app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
+// Prepare for hosting on Heroku together with api
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
 
 //logging using morgan 
 app.use(morgan('common'));
