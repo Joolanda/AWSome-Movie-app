@@ -55,9 +55,8 @@ const RegisterationView = () => {
                 email: '',
                 dob: ''
             });
-            data && window.open('/', '_self'); 
-            /* PB for cloud, step 2: if backend validation is successful, the data will be logged in the console and the user will be redirected to the main view.*/    
-            // data && window.open('/client', '_self');
+            data && window.open('/client', '_self'); 
+            // Before hosting on Heroku together with api: data && window.open('/', '_self');
          })
          .catch(error =>{
             setMessage("User registration failed. Please try later");
