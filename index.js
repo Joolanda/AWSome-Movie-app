@@ -52,7 +52,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //for allowing app access from by others 
-const allowedOrigins = ['http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'https://my-flix-movie-api.herokuapp.com/', 'http://localhost:1234', 'https://myflix-react-app.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://awesome-movie.herokuapp.com/', 'https://my-flix-movie-api.herokuapp.com/', 'http://localhost:1234', 'https://myflix-react-app.netlify.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null, true);
@@ -76,7 +76,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error has occured!');
 })
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port, '0.0.0.0', () => {
     console.log(`Listening on Port ${port}`);
 })
@@ -292,6 +292,6 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.listen(8080, () => {
-    console.log('Server started on port 8080');
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
 });
