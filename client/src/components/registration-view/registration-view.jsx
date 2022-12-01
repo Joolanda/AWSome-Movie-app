@@ -55,8 +55,8 @@ const RegisterationView = () => {
                 email: '',
                 dob: ''
             });
-            data && window.open('/client', '_self'); 
-            // Before hosting on Heroku together with api: data && window.open('/', '_self');
+            data && window.open('/', '_self');
+            // hosting client on heroku together with api: data && window.open('/client', '_self');
          })
          .catch(error =>{
             setMessage("User registration failed. Please try later");
