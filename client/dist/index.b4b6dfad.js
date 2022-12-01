@@ -37937,6 +37937,7 @@ class MainView extends (0, _reactDefault.default).Component {
         const { movies , loading , user  } = this.state;
         // PB cloud, step 1: add after return <Router basename="/client"></Router>
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
+            basename: "/client",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                     exact: true,
@@ -42032,8 +42033,8 @@ const RegisterationView = ()=>{
                 email: "",
                 dob: ""
             });
-            data && window.open("/", "_self");
-        /* PB for cloud, step 2: if backend validation is successful, the data will be logged in the console and the user will be redirected to the main view.*/ // data && window.open('/client', '_self');
+            data && window.open("/client", "_self");
+        // Before hosting on Heroku together with api: data && window.open('/', '_self');
         }).catch((error)=>{
             setMessage("User registration failed. Please try later");
             /*window.open('/', '_self');*/ console.log(`Registration failed!!! ${error}`);
@@ -42049,7 +42050,7 @@ const RegisterationView = ()=>{
                     children: "Registration Page"
                 }, void 0, false, {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 72,
+                    lineNumber: 71,
                     columnNumber: 17
                 }, undefined),
                 message && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42060,12 +42061,12 @@ const RegisterationView = ()=>{
                         children: message
                     }, void 0, false, {
                         fileName: "src/components/registration-view/registration-view.jsx",
-                        lineNumber: 75,
+                        lineNumber: 74,
                         columnNumber: 29
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 74,
+                    lineNumber: 73,
                     columnNumber: 25
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -42078,7 +42079,7 @@ const RegisterationView = ()=>{
                                     children: "Username: "
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 82,
+                                    lineNumber: 81,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42091,7 +42092,7 @@ const RegisterationView = ()=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 83,
+                                    lineNumber: 82,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42099,13 +42100,13 @@ const RegisterationView = ()=>{
                                     children: errors.username
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 91,
+                                    lineNumber: 90,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 81,
+                            lineNumber: 80,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -42116,7 +42117,7 @@ const RegisterationView = ()=>{
                                     children: "Password: "
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 96,
+                                    lineNumber: 95,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42129,7 +42130,7 @@ const RegisterationView = ()=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 97,
+                                    lineNumber: 96,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42137,13 +42138,13 @@ const RegisterationView = ()=>{
                                     children: errors.password
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 105,
+                                    lineNumber: 104,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 95,
+                            lineNumber: 94,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -42154,7 +42155,7 @@ const RegisterationView = ()=>{
                                     children: "Email: "
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 110,
+                                    lineNumber: 109,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42167,7 +42168,7 @@ const RegisterationView = ()=>{
                                     required: true
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 111,
+                                    lineNumber: 110,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42175,13 +42176,13 @@ const RegisterationView = ()=>{
                                     children: errors.email
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 119,
+                                    lineNumber: 118,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 109,
+                            lineNumber: 108,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -42192,7 +42193,7 @@ const RegisterationView = ()=>{
                                     children: "Date of Birth: "
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 124,
+                                    lineNumber: 123,
                                     columnNumber: 25
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42202,13 +42203,13 @@ const RegisterationView = ()=>{
                                     placeholder: "Enter date of birth here"
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
-                                    lineNumber: 125,
+                                    lineNumber: 124,
                                     columnNumber: 25
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 123,
+                            lineNumber: 122,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42219,24 +42220,24 @@ const RegisterationView = ()=>{
                             children: "Register"
                         }, void 0, false, {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 131,
+                            lineNumber: 130,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 80,
+                    lineNumber: 79,
                     columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/registration-view/registration-view.jsx",
-            lineNumber: 71,
+            lineNumber: 70,
             columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/registration-view/registration-view.jsx",
-        lineNumber: 70,
+        lineNumber: 69,
         columnNumber: 9
     }, undefined);
 };
