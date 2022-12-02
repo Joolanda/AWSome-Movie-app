@@ -22,6 +22,15 @@
         "build": "parcel-build", 
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Joolanda/AWSome-Movie-app.git"
+      },
+      "author": "Joolanda",
+      "license": "ISC",
+      "bugs": {
+        "url": "https://github.com/Joolanda/AWSome-Movie-app/issues"
+      },
     "devDependencies": {
         "@parcel/transformer-sass": "^2.0.0-rc.0",
         "parcel": "^2.8.0",
