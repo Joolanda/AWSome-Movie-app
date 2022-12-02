@@ -6,11 +6,11 @@ const mongoose = require('mongoose');
 const Models = require('./models.js');
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
-// PB cloud step 3a : const path = require('path');
+// hosting client on heroku together with api: const path = require('path');
+const path = require('path');
 const app = express();
-
 //call dotenv
-require('dotenv').config();
+// require('dotenv').config();
 
 // testing connection mongodb
 console.log(process.env);
@@ -31,9 +31,6 @@ mongoose.connect(process.env.CONNECTION_URI,
         console.log("Unable to connect to MongoDB Atlas!");
         console.error(error);
       });
-/*mongoose.connect('mongodb+srv://myFlixDBadmin:54321@myflixdb-ojsjk.mongodb.net/myFlixDB?retryWrites=true&w=majority', 
-                { useNewUrlParser: true, 
-                 useUnifiedTopology: true }); */
               
 //for connecting to mongoDB
 const Movies = Models.Movie;
@@ -42,8 +39,8 @@ const Users = Models.User;
 //serving static content
 app.use(express.static('public'));
 
-// PB cloud, step3 add this code right after the line app.use(express.static("public"));. task 3.6 prep for hosting
-// app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
+// Prepare for hosting on Heroku together with api
+app.use('/client', express.static(path.join(__dirname, 'client', 'dist'))); 
 
 //logging using morgan 
 app.use(morgan('common'));
@@ -56,7 +53,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //for allowing app access from by others 
-const allowedOrigins = ['http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'https://my-flix-movie-api.herokuapp.com/', 'http://localhost:1234', 'https://myflix-react-app.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'https://my-flix-movie-api.herokuapp.com/', 'http://localhost:1234', 'https://myflix-react-app.netlify.app'];
 app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null, true);
@@ -80,7 +77,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error has occured!');
 })
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 app.listen(port, '0.0.0.0', () => {
     console.log(`Listening on Port ${port}`);
 })
@@ -89,9 +86,10 @@ app.listen(port, '0.0.0.0', () => {
 app.get('/', (req, res) => {
     res.send("Welcome to my CloudFlix API !!!");
 });
+// hosting client on heroku together with api:
 app.get("/client/*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-  });
+});
 
 // Return a list of ALL movies to the user
 //commented for frontend exercise
@@ -295,6 +293,6 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.listen(8080, () => {
-    console.log('Server started on port 8080');
+app.listen(3000, () => {
+    console.log('Server started on port 3000');
 });
