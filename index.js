@@ -10,7 +10,7 @@ const { check, validationResult } = require('express-validator');
 const path = require('path');
 const app = express();
 //call dotenv
-// require('dotenv').config();
+require('dotenv').config();
 
 // testing connection mongodb
 console.log(process.env);
@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //for allowing app access from by others 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'https://my-flix-movie-api.herokuapp.com/', 'http://localhost:1234', 'https://myflix-react-app.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null, true);
