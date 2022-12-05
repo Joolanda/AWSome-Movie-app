@@ -1,0 +1,100 @@
+.movie-img {
+  height: 18rem;
+  object-fit: cover;
+}
+.reg-container {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 60%;
+  min-width: 480px;
+}
+
+.reg-btn {
+  width: 100%;
+  border-radius: 5px;
+}
+.login-container {
+  margin: auto;
+  margin-top: 50px;
+  max-width: 60%;
+  min-width: 480px;
+}
+
+.login-btn {
+  width: 100%;
+  border-radius: 5px;
+}
+.main-view {
+  display: inline-block;
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.loading-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  font-size: 32px;
+  color: white;
+}
+.movie-poster {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.label {
+  color: #2b2c2c;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.movie-footer a {
+  margin-left: 10px;
+}
+.navbar {
+  margin-bottom: 10px;
+}
+.fav-movie {
+  margin-bottom: 15px;
+}
+.fav-movie figure {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+.fav-movie figure img {
+  display: block;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  margin: auto;
+}
+.fav-movie figure figcaption {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.fav-movie button.btn {
+  display: block;
+  margin: auto;
+}
+
+.card {
+  margin-bottom: 15px;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Teko", sans-serif !important;
+}
+/*# sourceMappingURL=index.3f764291.css.map */
