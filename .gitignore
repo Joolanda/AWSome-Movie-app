@@ -2,6 +2,7 @@
 node_modules
 .env
 .cache
+.parcel-cache
 client/src/cache/*
 package-lock.json
 github_shh_key
