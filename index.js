@@ -20,7 +20,7 @@ console.log(process.env);
 /* mongoose.connect('mongodb://127.0.0.1:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true }); 
 */
 //connecting cloud mongo using heroku
-mongoose.connect(process.env.CONNECTION_URI, 
+mongoose.connect(process.env.MONGODB_URI, 
     { useNewUrlParser: true, 
      useUnifiedTopology: true,
      useCreateIndex: true, })
@@ -76,11 +76,11 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Error has occured!');
 })
-
-const port = process.env.PORT || 3000;
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Listening on Port ${port}`);
-})
+// before client 
+//const port = process.env.PORT || 3000;
+//app.listen(port, '0.0.0.0', () => {
+ //   console.log(`Listening on Port ${port}`);
+//})
 
 //API endpoints start
 app.get('/', (req, res) => {
