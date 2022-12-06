@@ -20,7 +20,6 @@ class MainView extends React.Component {
         super();
         this.state = {
             movies: [],
-            loading: false,
             user: null
         };
     }
@@ -45,8 +44,7 @@ class MainView extends React.Component {
         })
         .then( response =>{
             this.setState({
-                movies: response.data,
-                loading: false
+                movies: response.data
             });
         })
         .catch(error => {
@@ -71,13 +69,9 @@ class MainView extends React.Component {
             user: null
         });
     }
-    
-    if(loading){
-        return <div className="loading-message">Loading the data.....</div>;
-    }
 
     render() {
-        const { movies, loading, user } = this.state; 
+        const { movies, user } = this.state; 
         // hosting client on heroku together with api: <Router basename="/client"></Router>
         // previous code from MyFlix Movie App:
         let username = localStorage.getItem('user');
