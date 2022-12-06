@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 //for allowing app access from by others 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080', 'https://awesome-movie.herokuapp.com/', 'http://localhost:1234'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:8080', 'https://awesome-movie.herokuapp.com', 'https://awesome-movie.herokuapp.com/login','http://localhost:1234'];
 app.use(cors({
     origin: (origin, callback) => {
         if(!origin) return callback(null, true);
@@ -77,18 +77,18 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error has occured!');
 })
 // before client 
-//const port = process.env.PORT || 3000;
-//app.listen(port, '0.0.0.0', () => {
- //   console.log(`Listening on Port ${port}`);
-//})
+const port = process.env.PORT || 3000;
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Listening on Port ${port}`);
+})
 
 //API endpoints start
 app.get('/', (req, res) => {
     res.send("Welcome to my CloudFlix API !!!");
 });
 // hosting client on heroku together with api:
-app.get("/client/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+app.get('/client/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
 });
 
 // Return a list of ALL movies to the user
@@ -107,7 +107,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }),  (req, res)
 // Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
 app.get('/movies/:Title', passport.authenticate('jwt',{ session: false }), (req, res) => {
     Movies.findOne({ Title: req.params.Title})
-        .then((movie)=>{
+        .then((movie) => {
             res.status(200).json(movie);
         })
         .catch((err) => {
@@ -117,7 +117,7 @@ app.get('/movies/:Title', passport.authenticate('jwt',{ session: false }), (req,
 });
 
 // Return data about a genre (description) by name/title (e.g., “Thriller”)
-app.get('/movies/genre/:Name', passport.authenticate('jwt',{ session: false }), (req, res) => {
+app.get('/movies/Genre/:Name', passport.authenticate('jwt',{ session: false }), (req, res) => {
     Movies.findOne({ "Genre.Name": req.params.Name})
     .then((genre)=>{
         res.status(200).json(genre);
@@ -129,7 +129,7 @@ app.get('/movies/genre/:Name', passport.authenticate('jwt',{ session: false }), 
 });
 
 // Return data about a director (bio, birth year, death year) by name
-app.get('/movies/directors/:Name', passport.authenticate('jwt',{ session: false }), (req, res) => {
+app.get('/movies/Director/:Name', passport.authenticate('jwt',{ session: false }), (req, res) => {
     Movies.findOne({ "Director.Name": req.params.Name})
     .then((director)=>{
         res.status(200).json(director);
@@ -139,7 +139,18 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt',{ session: false 
         res.status(500).send(`Error: ${err}`);
     });
 });
-
+// GET all users (For testing sake only !!
+app.get("/users", (req, res) => {
+    Users.find()
+      .then((users) => {
+        res.status(201).json(users);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+    }
+  );
 // Allow new users to register
 app.post('/users', 
         [
@@ -187,7 +198,7 @@ app.post('/users',
             });
         });
 
-// Allow users to udpdate their user info (username)
+// Allow users to update their user info (username)
 app.put('/users/:Username',
         passport.authenticate('jwt', { session: false }), 
         [
@@ -232,7 +243,7 @@ app.put('/users/:Username',
         });
 
 // Allow users to add a movie to their list of favorites (showing only a text that a movie has been added—more on this later)
-app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.post('/users/:Username/movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
     const {Username, MovieID} = req.params;
 
     Users.findOneAndUpdate(
@@ -254,7 +265,7 @@ app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { sess
 });
 
 // Allow users to remove a movie from their list of favorites (showing only a text that a movie has been removed—more on this later)
-app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.delete('/users/:Username/movies/:_id', passport.authenticate('jwt', { session: false }), (req, res) => {
     const {Username, MovieID} = req.params;
 
     Users.findOneAndUpdate(
@@ -293,6 +304,6 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
-});
+// app.listen(3000, () => {
+//    console.log('Server started on port 3000');
+//});
